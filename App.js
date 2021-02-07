@@ -1,13 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { PanGestureHandler } from 'react-native-gesture-handler';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PanGestureHandler
+      onGestureEvent={(gestureEvent) => {
+        let tranX = gestureEvent.nativeEvent.translationX;
+        let tranY = gestureEvent.nativeEvent.translationY;
+
+        console.log("TranslateX: " + tranX + "\n" + "TranslateY: " + tranY + "\n");
+      }}
+    >
+      <View style={styles.container}>
+      </View>
+    </PanGestureHandler>
   );
 }
 
